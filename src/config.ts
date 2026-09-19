@@ -11,7 +11,7 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "Fumika",
+	title: "Savalan Institute",
 	subtitle: "Demo Site",
 	lang: "en", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	// Leave it empty `[]` if want disable multi-languages. It can be sorted by array order
