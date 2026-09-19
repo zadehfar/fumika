@@ -1,3 +1,4 @@
+```astro
 ---
 import { Icon } from "astro-icon/components";
 import { navBarConfig, siteConfig } from "../config";
@@ -28,13 +29,22 @@ let links: NavBarLink[] = navBarConfig.links.map(
 	},
 );
 ---
-<div id="navbar" class="z-50 onload-animation">
-    <div class="absolute h-8 left-0 right-0 -top-8 bg-(--card-bg) transition"></div> <!-- used for onload animation -->
+<div id="navbar" class="z-50 onload-animation w-full absolute top-0 left-0">
+    <!-- Aspen-Style Top Dark Bar -->
+    <div class="w-full bg-[#181619] text-white hidden md:flex justify-center gap-6 py-2 text-[0.75rem] font-bold tracking-wide">
+        <a href="#" class="hover:text-gray-300 transition">Economic Opportunity</a>
+        <a href="#" class="hover:text-gray-300 transition">Energy and Climate</a>
+        <a href="#" class="hover:text-gray-300 transition">Leadership</a>
+        <a href="#" class="hover:text-gray-300 transition">Rising Generations</a>
+        <a href="#" class="hover:text-gray-300 transition">Societal Trust</a>
+    </div>
+
+    <!-- Main Navigation Bar (Full Width & Transparent) -->
     <div class:list={[
         className,
-        "card-base overflow-visible! max-w-(--page-width) h-[4.5rem] rounded-t-none! mx-auto flex items-center justify-between px-4"]}>
-        <a href={url('/', lang)} class="btn-plain scale-animation rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
-            <div class="flex flex-row text-(--primary) items-center text-md">
+        "w-full h-[5rem] flex items-center justify-between px-6 md:px-12 bg-transparent text-white"]}>
+        <a href={url('/', lang)} class="btn-plain scale-animation text-white rounded-lg h-[3.25rem] px-5 font-bold active:scale-95">
+            <div class="flex flex-row items-center text-md">
                 <Icon name="material-symbols:home-outline-rounded" class="text-[1.75rem] mb-1 mr-2" />
                 {siteConfig.title}
             </div>
@@ -42,20 +52,20 @@ let links: NavBarLink[] = navBarConfig.links.map(
         <div class="hidden md:flex">
             {links.map((l) => {
                 return <a aria-label={l.name} href={l.external ? l.url : url(l.url, lang)} target={l.external ? "_blank" : null}
-                          class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
+                          class="btn-plain scale-animation text-white rounded-lg h-11 font-bold px-5 active:scale-95"
                 >
                     <div class="flex items-center">
                         {l.name}
-                        {l.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-px ml-1 text-black/20 dark:text-white/20"></Icon>}
+                        {l.external && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-px ml-1 text-white/50"></Icon>}
                     </div>
                 </a>;
             })}
         </div>
-        <div class="flex">
+        <div class="flex text-white">
             <!--<SearchPanel client:load>-->
             <Search client:only="svelte" lang={lang}></Search>
             {!import.meta.env.PROD && (
-                <button aria-label="Display Settings" class="btn-plain scale-animation rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
+                <button aria-label="Display Settings" class="btn-plain scale-animation text-white rounded-lg h-11 w-11 active:scale-90" id="display-settings-switch">
                     <Icon name="material-symbols:palette-outline" class="text-[1.25rem]"></Icon>
                 </button>
             )}
@@ -63,7 +73,7 @@ let links: NavBarLink[] = navBarConfig.links.map(
                 <LanguageSwitch client:only="svelte" />
             )}
             <LightDarkSwitch client:only="svelte"></LightDarkSwitch>
-            <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation rounded-lg w-11 h-11 active:scale-90 md:hidden!" id="nav-menu-switch">
+            <button aria-label="Menu" name="Nav Menu" class="btn-plain scale-animation text-white rounded-lg w-11 h-11 active:scale-90 md:hidden!" id="nav-menu-switch">
                 <Icon name="material-symbols:menu-rounded" class="text-[1.25rem]"></Icon>
             </button>
         </div>
@@ -135,3 +145,5 @@ if (document.readyState === 'loading') {
     loadPagefind();
 }
 </script>}
+
+```
